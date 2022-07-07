@@ -1,0 +1,33 @@
+function _filter(list, predi){
+    let new_list = [];
+    _each(list, function(val){
+        if(predi(val)) new_list.push(val);
+    });
+    /* 중복 리팩토링 
+    for (let i=0 ; i<list.length;i++){
+        if(predi(list[i])){ //predi함수로 통해 '평가'를 한다.
+            new_list.push(list[i]);
+        }
+    }*/
+    return new_list;
+}
+
+
+function _map(list, mapper){
+    let new_list = [];
+    _each(list, function(val){
+        new_list.push(mapper(val));
+    });
+    /* 중복 리팩토링
+    for(let i=0;i<list.length;i++){
+        new_list.push(mapper(list[i]));
+    }*/
+    return new_list;
+}
+
+// 중복 되는것 자체를 함수형으로 바꾼다.
+function _each(list, iter){
+    for (let i = 0; i < list.length; i++) {
+        iter(list[i]);
+    }
+}
